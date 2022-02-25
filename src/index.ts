@@ -13,7 +13,7 @@ import { createConnection } from "typeorm";
 
 const app: Application = express();
 const PORT: number = 4000;
-
+// test pull
 async function startServer() {
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
