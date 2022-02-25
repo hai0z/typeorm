@@ -14,20 +14,20 @@ import { createConnection } from "typeorm";
 const app: Application = express();
 const PORT: number = 4000;
 
-async function startServer() {
-    const apolloServer = new ApolloServer({
-        schema: await buildSchema({
-            resolvers: [BookResolver, AuthorResolver, SampleResolver],
-        }),
-        context: ({ req, res }) => ({ req, res }),
-        plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
-    });
-    await apolloServer.start();
-    await createConnection()
-        .then(() => console.log("connected to mysqldb"))
-        .catch((err) => console.log(err));
-    apolloServer.applyMiddleware({ app });
-}
+// async function startServer() {
+//     const apolloServer = new ApolloServer({
+//         schema: await buildSchema({
+//             resolvers: [BookResolver, AuthorResolver, SampleResolver],
+//         }),
+//         context: ({ req, res }) => ({ req, res }),
+//         plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+//     });
+//     await apolloServer.start();
+//     await createConnection()
+//         .then(() => console.log("connected to mysqldb"))
+//         .catch((err) => console.log(err));
+//     apolloServer.applyMiddleware({ app });
+// }
 
 app.get("/", async (req: Request, res: Response) => {
     res.send(`success`);
@@ -44,7 +44,7 @@ app.use("/user", userRouter);
 //         console.log("connected to database");
 //     })
 //     .catch((err) => console.log(err));
-startServer();
+// startServer();
 app.listen(PORT, () => {
     console.log(`server started at http://localhost:${PORT}`);
     console.log(`graphql playground at http://localhost:${PORT}/graphql`);
