@@ -39,7 +39,6 @@ let SampleResolver = class SampleResolver {
         const newNotification = { id, message, date: new Date() };
         return newNotification;
     }
-    // dynamic topic
     async pubSubMutationToDynamicTopic(pubSub, topic, message) {
         const payload = { id: ++this.autoIncrement, message };
         await pubSub.publish(topic, payload);

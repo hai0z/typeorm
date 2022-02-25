@@ -31,3 +31,13 @@ export const updateUser = async (req: Request, res: Response): Promise<Response>
     }
     return res.status(404).json({ message: "User not found" });
 };
+
+export const getPhotos = async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+    const userRepository = getRepository(User);
+    const data = await userRepository.find({
+        relations: ["photos", "posts"],
+        where: { id },
+    });
+    return res.json(data);
+};

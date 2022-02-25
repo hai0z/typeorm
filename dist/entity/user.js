@@ -8,32 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const type_graphql_1 = require("type-graphql");
-require("reflect-metadata");
-const bookType_1 = __importDefault(require("./bookType"));
-let Author = class Author {
+exports.User = void 0;
+const typeorm_1 = require("typeorm");
+let User = class User extends typeorm_1.BaseEntity {
 };
 __decorate([
-    (0, type_graphql_1.Field)(() => type_graphql_1.ID),
-    __metadata("design:type", String)
-], Author.prototype, "_id", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], Author.prototype, "name", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Author.prototype, "age", void 0);
+], User.prototype, "id", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => [bookType_1.default]),
-    __metadata("design:type", Array)
-], Author.prototype, "books", void 0);
-Author = __decorate([
-    (0, type_graphql_1.ObjectType)()
-], Author);
-exports.default = Author;
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], User.prototype, "firstName", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], User.prototype, "lastName", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "boolean", default: false }),
+    __metadata("design:type", Boolean)
+], User.prototype, "isActive", void 0);
+User = __decorate([
+    (0, typeorm_1.Entity)()
+], User);
+exports.User = User;

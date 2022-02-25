@@ -1,10 +1,10 @@
 {
     "type": "mysql",
-    "host": "localhost",
+    "host": "db4free.net",
     "port": 3306,
-    "username": "root",
-    "password": "",
-    "database": "typeorm",
+    "username": "nguyengochai__",
+    "password": "J5e+Xud!<6|ZVv*~",
+    "database": "doan1__",
     "entities": ["src/entity/**/*.ts"],
     "synchronize": "true"
 }
