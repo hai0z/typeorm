@@ -41,7 +41,6 @@ app.use("/user", userRouter);
 mongoose
     .connect("mongodb://localhost/graphql")
     .then(() => {
-        startServer();
         console.log("connected to database");
     })
     .catch((err) => console.log(err));
