@@ -29,9 +29,7 @@ const PORT: number = 4000;
 //     apolloServer.applyMiddleware({ app });
 // }
 
-app.get("/", async (req: Request, res: Response) => {
-    res.send(`success`);
-});
+app.get("/", async (req: Request, res: Response) => {});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
