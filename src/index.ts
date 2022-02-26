@@ -39,7 +39,7 @@ async function startServer() {
 }
 
 app.get("/", async (req: Request, res: Response) => {
-    res.send(`success`);
+    res.send(`wibu`);
 });
 
 app.use(express.json());
