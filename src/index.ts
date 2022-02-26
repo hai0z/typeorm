@@ -37,14 +37,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use("/user", userRouter);
-mongoose
-    .connect("mongodb://localhost/graphql")
-    .then(() => {
-        startServer();
-        console.log("connected to database");
-    })
-    .catch((err) => console.log(err));
+// app.use("/user", userRouter);
+// mongoose
+//     .connect("mongodb://localhost/graphql")
+//     .then(() => {
+//         startServer();
+//         console.log("connected to database");
+//     })
+//     .catch((err) => console.log(err));
+startServer();
 app.listen(PORT, () => {
     console.log(`server started at http://localhost:${PORT}`);
     console.log(`graphql playground at http://localhost:${PORT}/graphql`);
