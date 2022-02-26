@@ -10,6 +10,9 @@ import mongoose from "mongoose";
 import "reflect-metadata";
 import userRouter from "./routes/user.routes";
 import { createConnection } from "typeorm";
+import { Post } from "./entity/post";
+import { Photo } from "./entity/photo";
+import { User } from "./entity/user";
 
 const app: Application = express();
 const PORT: number | string = process.env.PORT || 4000;
@@ -23,9 +26,15 @@ async function startServer() {
         plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     });
     await apolloServer.start();
-    await createConnection()
-        .then(() => console.log("connected to mysqldb"))
-        .catch((err) => console.log(err));
+    await createConnection({
+        type: "mysql",
+        host: "db4free.net",
+        port: 3306,
+        username: "nguyengochai__",
+        password: "J5e+Xud!<6|ZVv*~",
+        database: "doan1__",
+        entities: [User, Photo, Post],
+    });
     apolloServer.applyMiddleware({ app });
 }
 
