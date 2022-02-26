@@ -12,8 +12,8 @@ import userRouter from "./routes/user.routes";
 import { createConnection } from "typeorm";
 
 const app: Application = express();
-const PORT: number = 4000;
-// test pull ok
+const PORT: number | string = process.env.PORT || 4000;
+
 async function startServer() {
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
