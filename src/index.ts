@@ -34,7 +34,7 @@ async function startServer() {
         password: "J5e+Xud!<6|ZVv*~",
         database: "doan1__",
         entities: [User, Photo, Post],
-    });
+    }).then(() => console.log("Connected to database"));
     apolloServer.applyMiddleware({ app });
 }
 
