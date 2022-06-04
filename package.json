@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "proxy": "http://26.154.2.2:4000/",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "nodemon src/index.ts --exec ts-node",

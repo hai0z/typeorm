@@ -41,13 +41,34 @@ export class BookResolver {
         const newBook = new bookModel({ name, genre, authorId });
         return await newBook.save();
     }
+
+    @Mutation(() => bookType)
+    async updateBook(
+        @Arg("id") id: string,
+        @Arg("name") name: string,
+        @Arg("genre") genre: string
+    ) {
+        return await bookModel.findByIdAndUpdate(
+            id,
+            { name, genre },
+            { new: true }
+        );
+    }
+    @Mutation(() => bookType)
+    async deleteBook(@Arg("id") id: string) {
+        return await bookModel.findByIdAndDelete(id);
+    }
+
     @Subscription({ topics: "NOTIFICATIONS" })
     newNotification(@Root() payload: string): string {
         return payload;
     }
 
     @Mutation(() => String)
-    async sendMessage(@Arg("name") name: string, @PubSub() pubsub: PubSubEngine): Promise<string> {
+    async sendMessage(
+        @Arg("name") name: string,
+        @PubSub() pubsub: PubSubEngine
+    ): Promise<string> {
         pubsub.publish("NOTIFICATIONS", name);
         return name;
     }

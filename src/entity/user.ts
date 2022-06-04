@@ -1,5 +1,5 @@
 import { Post } from "./post";
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from "typeorm";
 import { Photo } from "./photo";
 @Entity()
 export class User extends BaseEntity {
